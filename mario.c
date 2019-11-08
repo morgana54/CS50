@@ -7,13 +7,14 @@ int main(void)
 // Your first "nest" loop yeah
 {
     int h = get_positive_int("Height:"); 
-// This line of code below mówi, że tyle razy wykonana zostanie jedna linijka i potem \n (jak wpiszesz dwa, to dwie linijki)
+// This line of code below mówi, że tyle razy ile jesr równe h wykonana zostanie tyle linijek i potem
     for (int i = 0; i < h; i++)
     {
-        for (int d = 7; d > i; d--)
+        for (int d = h-1; d > i; d--)
         {
             printf(" ");                        
         }
+        
         for (int hash = -1; hash < i; hash++)
         {
             printf("#");
@@ -21,7 +22,6 @@ int main(void)
         printf("\n");
         
     }
-
 }
 
 //declaring function that I used in the first scope (loop for returning the right h)
