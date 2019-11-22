@@ -23,26 +23,26 @@ int main(void)
     
     while (ce >= 25)
     {
-      ce = ce - 25;
-      a++;
+        ce = ce - 25;
+        a++;
     }
     
     while (ce >= 10)
     {
-      ce = ce - 10;
-      b++;
+        ce = ce - 10;
+        b++;
     }
     
     while (ce >= 5)
     {
-      ce = ce - 5;
-      c++;
+        ce = ce - 5;
+        c++;
     }
     
     while (ce >= 1)
     {
-      ce = ce - 1;
-      d++;
+        ce = ce - 1;
+        d++;
     }
     
     int coins = a + b + c + d;
