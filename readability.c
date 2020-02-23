@@ -24,17 +24,17 @@ int main(void)
     int ind = round(index);
   
   
-    if(ind >=1 && ind <= 15)
+    if(ind >= 1 && ind <= 15)
     {
-      printf("Grade %i\n", ind);
+        printf("Grade %i\n", ind);
     }
     else if (ind < 1)
     {
-      printf("Before Grade 1\n");
+        printf("Before Grade 1\n");
     }
     else if (ind >= 16)
     {
-      printf("Grade 16+\n");
+        printf("Grade 16+\n");
     }
 }
 
@@ -62,19 +62,19 @@ int count_words(string txt)
 
     // If a "i"th character is a non-space, add one word, THEN: increment the number of chars in array until you encounter space
     // By doing this in a loop you get what you want babyyyy
-    for(int i = 0; txt[i] != '\0'; i++)
+    for (int i = 0; txt[i] != '\0'; i++)
     {
       if (txt[i] != ' ')
       {
         sum++;
 
-        for(int n = 0; txt[i] != ' '; n++)
+        for (int n = 0; txt[i] != ' '; n++)
         {
-          if (txt[i] == '\0')
-          {
-            break;
-          }
-          i++;
+            if (txt[i] == '\0')
+            {
+                break;
+            }
+            i++;
         }
       }
     }
@@ -82,11 +82,12 @@ int count_words(string txt)
 
 }
 
-
+// Defining the function
 int count_sent(string txt)
 {
     int sum = 0;
 
+    // Loop for sentences, only three conditions needed
     for (int i = 0; txt[i] != '\0'; i++)
     {
       if (txt[i] == '.' || txt[i] == '!' || txt[i] == '?')
