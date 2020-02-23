@@ -12,6 +12,7 @@ int main(void)
     // Function first takes string from user, stores it in "usertxt" and then takes it to the function count_letters
     // which returns the number of letters and stores it in a variable "letters"
     string usertxt = get_string("Text: ");
+    
     int letters = count_letters(usertxt);
     int words = count_words(usertxt);
     int sent = count_sent(usertxt);
@@ -21,12 +22,12 @@ int main(void)
   
     float index = 0.0588 * l - 0.296 * s - 15.8;
  
-    int ind = round(index);
+    float ind = round(index);
   
   
     if(ind >= 1 && ind <= 15)
     {
-        printf("Grade %i\n", ind);
+        printf("Grade %.0f\n", ind);
     }
     else if (ind < 1)
     {
