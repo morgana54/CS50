@@ -174,9 +174,9 @@ bool print_winner(void)
     // Total votes = voter_count ---> we are looking for number that is bigger than half
     for (int i = 0; i < candidate_count; i++)
     {
-       if (candidates[i].votes > (voter_count / 2))
+       if ((candidates[i].votes) > (voter_count / 2))
        {
-           printf("%s", candidates[i].name);
+           printf("%s\n", candidates[i].name);
            return true;
        }
     }
@@ -221,7 +221,7 @@ void eliminate(int min)
     // Eliminating anyone still in the race that has min number of votes
     for (int i = 0; i < candidate_count; i++)
     {
-        if ((candidates[i].eliminated == false) && (candidates[i].votes = min))
+        if ((candidates[i].eliminated == false) && (candidates[i].votes == min))
         {
             candidates[i].eliminated = true;
         }
