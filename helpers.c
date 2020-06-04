@@ -104,13 +104,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 int averageRed = round((image[i][j].rgbtRed + image[i-1][j-1].rgbtRed + image[i][j-1].rgbtRed + image[i-1][j].rgbtRed + 
                                         image[i+1][j].rgbtRed + image[i][j+1].rgbtRed + image[i+1][j+1].rgbtRed + image[i+1][j-1].rgbtRed + 
-                                        image[i-1][j+1].rgbtRed) / 9);
+                                        image[i-1][j+1].rgbtRed) / 9.0);
                 int averageGreen = round((image[i][j].rgbtGreen + image[i-1][j-1].rgbtGreen + image[i][j-1].rgbtGreen + image[i-1][j].rgbtGreen + 
                                         image[i+1][j].rgbtGreen + image[i][j+1].rgbtGreen + image[i+1][j+1].rgbtGreen + image[i+1][j-1].rgbtGreen + 
-                                        image[i-1][j+1].rgbtGreen) / 9);
+                                        image[i-1][j+1].rgbtGreen) / 9.0);
                 int averageBlue = round((image[i][j].rgbtBlue + image[i-1][j-1].rgbtBlue + image[i][j-1].rgbtBlue + image[i-1][j].rgbtBlue + 
                                         image[i+1][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i+1][j+1].rgbtBlue + image[i+1][j-1].rgbtBlue + 
-                                        image[i-1][j+1].rgbtBlue) / 9);
+                                        image[i-1][j+1].rgbtBlue) / 9.0);
 
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
@@ -120,9 +120,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
              // case #2: don't count 5 pixels at the top left corner
             else if ((i-1) < 0 && (j-1) < 0)
             {
-                int averageRed = round((image[i][j].rgbtRed + image[i+1][j].rgbtRed + image[i][j+1].rgbtRed + image[i+1][j+1].rgbtRed) / 4);
-                int averageGreen = round((image[i][j].rgbtGreen + image[i+1][j].rgbtGreen + image[i][j+1].rgbtGreen + image[i+1][j+1].rgbtGreen) / 4);
-                int averageBlue = round((image[i][j].rgbtBlue + image[i+1][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i+1][j+1].rgbtBlue) / 4);
+                int averageRed = round((image[i][j].rgbtRed + image[i+1][j].rgbtRed + image[i][j+1].rgbtRed + image[i+1][j+1].rgbtRed) / 4.0);
+                int averageGreen = round((image[i][j].rgbtGreen + image[i+1][j].rgbtGreen + image[i][j+1].rgbtGreen + image[i+1][j+1].rgbtGreen) / 4.0);
+                int averageBlue = round((image[i][j].rgbtBlue + image[i+1][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i+1][j+1].rgbtBlue) / 4.0);
 
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
@@ -131,9 +131,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             // case #3: don't count 5 pixels at the top right corner
             else if ((i-1) < 0 && (j+1) > (width-1))
             {
-                int averageRed = round((image[i][j].rgbtRed + image[i][j-1].rgbtRed + image[i+1][j].rgbtRed + image[i+1][j-1].rgbtRed) / 4);
-                int averageGreen = round((image[i][j].rgbtGreen + image[i][j-1].rgbtGreen + image[i+1][j].rgbtGreen + image[i+1][j-1].rgbtGreen) / 4);
-                int averageBlue = round((image[i][j].rgbtBlue + image[i][j-1].rgbtBlue + image[i+1][j].rgbtBlue + image[i+1][j-1].rgbtBlue) / 4);
+                int averageRed = round((image[i][j].rgbtRed + image[i][j-1].rgbtRed + image[i+1][j].rgbtRed + image[i+1][j-1].rgbtRed) / 4.0);
+                int averageGreen = round((image[i][j].rgbtGreen + image[i][j-1].rgbtGreen + image[i+1][j].rgbtGreen + image[i+1][j-1].rgbtGreen) / 4.0);
+                int averageBlue = round((image[i][j].rgbtBlue + image[i][j-1].rgbtBlue + image[i+1][j].rgbtBlue + image[i+1][j-1].rgbtBlue) / 4.0);
 
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
@@ -142,9 +142,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             // case #4: don't count 5 pixels at the bottom left corner
             else if ((i+1) > (height-1) && (j-1) < 0)
             {
-                int averageRed = round((image[i][j].rgbtRed + image[i-1][j].rgbtRed + image[i][j+1].rgbtRed + image[i-1][j+1].rgbtRed) / 4);
-                int averageGreen = round((image[i][j].rgbtGreen + image[i-1][j].rgbtGreen + image[i][j+1].rgbtGreen + image[i-1][j+1].rgbtGreen) / 4);
-                int averageBlue = round((image[i][j].rgbtBlue + image[i-1][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i-1][j+1].rgbtBlue) / 4);
+                int averageRed = round((image[i][j].rgbtRed + image[i-1][j].rgbtRed + image[i][j+1].rgbtRed + image[i-1][j+1].rgbtRed) / 4.0);
+                int averageGreen = round((image[i][j].rgbtGreen + image[i-1][j].rgbtGreen + image[i][j+1].rgbtGreen + image[i-1][j+1].rgbtGreen) / 4.0);
+                int averageBlue = round((image[i][j].rgbtBlue + image[i-1][j].rgbtBlue + image[i][j+1].rgbtBlue + image[i-1][j+1].rgbtBlue) / 4.0);
 
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
@@ -153,10 +153,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             // case #5: don't count 5 pixels at the bottom right corner
             else if ((i+1) > (height-1) && (j+1) > (width-1))
             {
-                int averageRed = round((image[i][j].rgbtRed + image[i-1][j-1].rgbtRed + image[i][j-1].rgbtRed + image[i-1][j].rgbtRed) / 4);
-                int averageGreen = round((image[i][j].rgbtGreen + image[i-1][j-1].rgbtGreen + image[i][j-1].rgbtGreen + image[i-1][j].rgbtGreen) / 4);
-                int averageBlue = round((image[i][j].rgbtBlue + image[i-1][j-1].rgbtBlue + image[i][j-1].rgbtBlue + image[i-1][j].rgbtBlue) / 4);
-
+                int averageRed = round((image[i][j].rgbtRed + image[i-1][j-1].rgbtRed + image[i][j-1].rgbtRed + image[i-1][j].rgbtRed) / 4.0);
+                int averageGreen = round((image[i][j].rgbtGreen + image[i-1][j-1].rgbtGreen + image[i][j-1].rgbtGreen + image[i-1][j].rgbtGreen) / 4.0);
+                int averageBlue = round((image[i][j].rgbtBlue + image[i-1][j-1].rgbtBlue + image[i][j-1].rgbtBlue + image[i-1][j].rgbtBlue) / 4.0);
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
                 image[i][j].rgbtBlue = averageBlue;
@@ -165,11 +164,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             else if ((i-1) < 0)
             {
                 int averageRed = round((image[i][j].rgbtRed + image[i][j-1].rgbtRed + image[i+1][j].rgbtRed + image[i][j+1].rgbtRed + 
-                                        image[i+1][j+1].rgbtRed + image[i+1][j-1].rgbtRed) / 6);
+                                        image[i+1][j+1].rgbtRed + image[i+1][j-1].rgbtRed) / 6.0);
                 int averageGreen = round((image[i][j].rgbtGreen + image[i][j-1].rgbtGreen + image[i+1][j].rgbtGreen + image[i][j+1].rgbtGreen + 
-                                        image[i+1][j+1].rgbtGreen + image[i+1][j-1].rgbtGreen) / 6);
+                                        image[i+1][j+1].rgbtGreen + image[i+1][j-1].rgbtGreen) / 6.0);
                 int averageBlue = round((image[i][j].rgbtBlue + image[i][j-1].rgbtBlue + image[i+1][j].rgbtBlue + image[i][j+1].rgbtBlue + 
-                                        image[i+1][j+1].rgbtBlue + image[i+1][j-1].rgbtBlue) / 6);
+                                        image[i+1][j+1].rgbtBlue + image[i+1][j-1].rgbtBlue) / 6.0);
 
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
@@ -179,11 +178,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             else if ((i+1) > (height-1))
             {
                 int averageRed = round((image[i][j].rgbtRed + image[i-1][j-1].rgbtRed + image[i][j-1].rgbtRed + image[i-1][j].rgbtRed + 
-                                        image[i][j+1].rgbtRed + image[i-1][j+1].rgbtRed) / 6);
+                                        image[i][j+1].rgbtRed + image[i-1][j+1].rgbtRed) / 6.0);
                 int averageGreen = round((image[i][j].rgbtGreen + image[i-1][j-1].rgbtGreen + image[i][j-1].rgbtGreen + image[i-1][j].rgbtGreen + 
-                                        image[i][j+1].rgbtGreen + image[i-1][j+1].rgbtGreen) / 6);
+                                        image[i][j+1].rgbtGreen + image[i-1][j+1].rgbtGreen) / 6.0);
                 int averageBlue = round((image[i][j].rgbtBlue + image[i-1][j-1].rgbtBlue + image[i][j-1].rgbtBlue + image[i-1][j].rgbtBlue + 
-                                        image[i][j+1].rgbtBlue + image[i-1][j+1].rgbtBlue) / 6);
+                                        image[i][j+1].rgbtBlue + image[i-1][j+1].rgbtBlue) / 6.0);
                                         
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
@@ -193,11 +192,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             else if ((j+1) > (width-1))
             {
                 int averageRed = round((image[i][j].rgbtRed + image[i-1][j-1].rgbtRed + image[i][j-1].rgbtRed + image[i-1][j].rgbtRed + 
-                                        image[i+1][j].rgbtRed + image[i+1][j-1].rgbtRed) / 6);
+                                        image[i+1][j].rgbtRed + image[i+1][j-1].rgbtRed) / 6.0);
                 int averageGreen = round((image[i][j].rgbtGreen + image[i-1][j-1].rgbtGreen + image[i][j-1].rgbtGreen + image[i-1][j].rgbtGreen + 
-                                        image[i+1][j].rgbtGreen + image[i+1][j-1].rgbtGreen) / 6);
+                                        image[i+1][j].rgbtGreen + image[i+1][j-1].rgbtGreen) / 6.0);
                 int averageBlue = round((image[i][j].rgbtBlue + image[i-1][j-1].rgbtBlue + image[i][j-1].rgbtBlue + image[i-1][j].rgbtBlue + 
-                                        image[i+1][j].rgbtBlue + image[i+1][j-1].rgbtBlue) / 6);
+                                        image[i+1][j].rgbtBlue + image[i+1][j-1].rgbtBlue) / 6.0);
 
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
@@ -207,11 +206,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             else if ((j-1) < 0)
             {
                 int averageRed = round((image[i][j].rgbtRed + image[i-1][j].rgbtRed + image[i+1][j].rgbtRed + image[i][j+1].rgbtRed + 
-                                        image[i+1][j+1].rgbtRed + image[i-1][j+1].rgbtRed) / 9);
+                                        image[i+1][j+1].rgbtRed + image[i-1][j+1].rgbtRed) / 6.0);
                 int averageGreen = round((image[i][j].rgbtGreen + image[i-1][j].rgbtGreen + image[i+1][j].rgbtGreen + image[i][j+1].rgbtGreen + 
-                                        image[i+1][j+1].rgbtGreen + image[i-1][j+1].rgbtGreen) / 9);
+                                        image[i+1][j+1].rgbtGreen + image[i-1][j+1].rgbtGreen) / 6.0);
                 int averageBlue = round((image[i][j].rgbtBlue + image[i-1][j].rgbtBlue + image[i+1][j].rgbtBlue + image[i][j+1].rgbtBlue + 
-                                        image[i+1][j+1].rgbtBlue + image[i-1][j+1].rgbtBlue) / 9);
+                                        image[i+1][j+1].rgbtBlue + image[i-1][j+1].rgbtBlue) / 6.0);
 
                 image[i][j].rgbtRed = averageRed;
                 image[i][j].rgbtGreen = averageGreen;
