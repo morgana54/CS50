@@ -56,11 +56,15 @@ int main(int argc, char *argv[])
 
             // you can't open a file that has been aleady opened (that recovered points to)
             new_JPEG = fopen(temp_filename, "w");
+            if (new_JPEG == NULL)
+            {
+                return 1;
+            }
 
             // write data until meeting the next header
             fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
         }
-        if (jpeg_count != 0)
+        else if (jpeg_count != 0)
         {
             // continue writing the current image
             fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
