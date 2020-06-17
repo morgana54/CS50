@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     char initial_filename[8];
 
     // declaring new file for recovering consecutive JPEGs
-    FILE *new_JPEG;
+    FILE *new_JPEG = NULL;
 
     // repeat until the end of the file
     // feof returns 1 when recovered points to the end of the file and 0 when it doesn't
