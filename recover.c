@@ -38,10 +38,8 @@ int main(int argc, char *argv[])
 
     // repeat until the end of the file
     // feof returns 1 when recovered points to the end of the file and 0 when it doesn't
-    while (feof(recovered) == 0)
+    while (fread(buffer, BLOCK_SIZE, 1, recovered))
     {
-        fread(buffer, BLOCK_SIZE, 1, recovered);
-
         // start writing when you encounter JPEG header
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
         {
@@ -72,13 +70,8 @@ int main(int argc, char *argv[])
             // continue writing the current image
             fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
         }
-        
-        
-        if (feof(recovered) == 0)
-        {
-            fclose(new_JPEG);
-        }
     }
+    fclose(new_JPEG);
     fclose(recovered);
     free(buffer);
     return 0;
