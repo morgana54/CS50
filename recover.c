@@ -72,8 +72,13 @@ int main(int argc, char *argv[])
             // continue writing the current image
             fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
         }
+        
+        
+        if (feof(recovered) == 0)
+        {
+            fclose(new_JPEG);
+        }
     }
-    fclose(new_JPEG);
     fclose(recovered);
     free(buffer);
     return 0;
