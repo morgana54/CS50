@@ -33,13 +33,14 @@ int main(int argc, char *argv[])
     // *NULL character counts as one
     char temp_filename[8]; 
     
+    FILE *new_JPEG = NULL;
+    
     // repeat until the end of the file
     // feof returns 1 when recovered points to the end of the file and 0 when it's not
     while (feof(recovered) == 0)
     // LUB jak zwrócona wartość jest większa lub równa 256
     {
-        // 6972 = rozmiar card.raw podzielony przez 512 i zaokrąglony do góry
-        fread(buffer, BLOCK_SIZE, 6973, recovered);
+        fread(buffer, BLOCK_SIZE, 1, recovered);
 
         // start writing when you encounter JPEG header
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
@@ -51,14 +52,14 @@ int main(int argc, char *argv[])
                 jpeg_count++; 
                 
                 // you can't open a file that has been aleady opened (that recovered points to)
-                FILE *new_JPEG = fopen(temp_filename, "w");
+                new_JPEG = fopen(temp_filename, "w");
                 if (new_JPEG == NULL)
                 {
                     return 3;
                 }
             
-                // fwrite until meeting the next header
-            
+                // write data until meeting the next header
+                fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
                 
             }
             else
@@ -66,16 +67,15 @@ int main(int argc, char *argv[])
                 sprintf(temp_filename, "%03i.jpg", jpeg_count);
                 jpeg_count++; 
                 
-                FILE *new_JPEG = fopen(temp_filename, "w");
+                new_JPEG = fopen(temp_filename, "w");
                 if (new_JPEG == NULL)
                 {
                     return 3;
                 }
             
-                // fwrite
-            
-                
+                fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
             }
+            fclose(new_JPEG);
             
         }
     }
