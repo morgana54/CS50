@@ -38,6 +38,9 @@ int main(int argc, char *argv[])
 
     // repeat until the end of the file
     // feof returns 1 when recovered points to the end of the file and 0 when it doesn't
+    // while this is true (so there are no errors)
+    // if fread has an error it returns 0
+    // *you could also write just the function, without "!= 0", because 0 = false
     while (fread(buffer, BLOCK_SIZE, 1, recovered) != 0)
     {
         // start writing when you encounter JPEG header
