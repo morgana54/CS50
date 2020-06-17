@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
     BYTE *buffer = malloc(BLOCK_SIZE);
 
     // counting JPEGs to name each one correctly
+    // it also allows you to say if you have already found a the first JPEG
     int jpeg_count = 0;
 
     // 8 because your string used to name the seperate images will have 8 chars: "xxx.jpg'\0'"
@@ -44,31 +45,25 @@ int main(int argc, char *argv[])
         // start writing when you encounter JPEG header
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
         {
-            // CREATE a new file do którego zapiszesz tego JPEGA
-            if (jpeg_count == 0)
+            // CREATE a new file to which you will write the current JPEG
+            if (jpeg_count != 0)
             {
-                sprintf(temp_filename, "%03i.jpg", jpeg_count);
-                jpeg_count++;
-
-                // you can't open a file that has been aleady opened (that recovered points to)
-                new_JPEG = fopen(temp_filename, "w");
-
-                // write data until meeting the next header
-                fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
-                fclose(new_JPEG);
-
-            }
-            else
-            {
-                sprintf(temp_filename, "%03i.jpg", jpeg_count);
-                jpeg_count++;
-
-                new_JPEG = fopen(temp_filename, "w");
-
-                fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
                 fclose(new_JPEG);
             }
-        
+            
+            sprintf(temp_filename, "%03i.jpg", jpeg_count);
+            jpeg_count++;
+
+            // you can't open a file that has been aleady opened (that recovered points to)
+            new_JPEG = fopen(temp_filename, "w");
+
+            // write data until meeting the next header
+            fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
+        }
+        if (jpeg_count != 0)
+        {
+            // continue writing the current image
+            fwrite(buffer, BLOCK_SIZE, 1, new_JPEG);
         }
     }
     free(buffer);
