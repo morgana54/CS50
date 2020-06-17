@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // open memory card and 
+    // open memory card and
     FILE *recovered = fopen(argv[1], "r");
     if (recovered == NULL)
     {
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
     // repeat until the end of the file
     // feof returns 1 when recovered points to the end of the file and 0 when it doesn't
-    while (fread(buffer, BLOCK_SIZE, 1, recovered))
+    while (fread(buffer, BLOCK_SIZE, 1, recovered) != 0)
     {
         // start writing when you encounter JPEG header
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
             {
                 fclose(new_JPEG);
             }
-            
+
             // renaming current file
             sprintf(initial_filename, "%03i.jpg", jpeg_count);
             jpeg_count++;
