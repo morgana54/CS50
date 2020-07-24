@@ -27,15 +27,6 @@ int nodesInHashtable = 0;
 // Hash table
 node *table[BUCKETS];
 
-// Lower every character in a string
-void strtolower(char * dest, const char * src, int n)
-{
-    for(int i = 0; i < n; i++)
-    {
-        dest[i] = tolower(src[i]);
-    }
-}
-
 // Get index between 1 and BUCKETS
 unsigned int getBucketIndex(const char *word)
 {
@@ -84,24 +75,34 @@ bool load(const char *dictionary)
     // Read file
     while(fscanf(d, "%s", tmp_word) != EOF)
     {
-
         setInHashtable(tmp_word);
         nodesInHashtable++;
-
     }
 
     return true;
 }
 
+// Lower every character in a string
+void strtolower(char * lowered, const char * word, int n)
+{
+    // Iterate through each character
+    for(int i = 0; i < n; i++)
+    {
+        lowered[i] = tolower(word[i]);
+    }
+}
+
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
+    // Strlen returns number of chars and char has 1 byte size
     char* wordLowerCase = malloc(strlen(word));
     strtolower(wordLowerCase, word, strlen(word));
 
-    // char* wordInLowerCase = toLowerCase(word)
+    // Gets the same bucket every time
     int bucket = getBucketIndex(wordLowerCase);
 
+    // Declares helper pointer
     node* cursor = table[bucket];
 
     // Traverse through the linked list at a given bucket
