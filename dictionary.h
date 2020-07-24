@@ -16,8 +16,4 @@ bool load(const char *dictionary);
 unsigned int size(void);
 bool unload(void);
 
-// My prototypes
-void setInHashtable(char* word);
-bool findInHashtable(char* word);
-
 #endif // DICTIONARY_H

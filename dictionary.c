@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "dictionary.h"
 
@@ -48,6 +49,7 @@ node* createNode(const char *word)
 // Setting word in the hash table
 void setInHashtable(char *word)
 {
+
     // Store the index into the variable
     int bucketIndex = getBucketIndex(word);
 
@@ -56,7 +58,7 @@ void setInHashtable(char *word)
 
     // Insert the node into the hash table
     n->next = table[bucketIndex]; /* n->next points to the same thing that table points to (that is NULL - if it's the first element inserted to the list)*/
-    table[bucketIndex] = n; /* table is a header (AKA bucket) of each linked list*/ 
+    table[bucketIndex] = n; /* table is a header (AKA bucket) of each linked list*/
 }
 
 
@@ -72,35 +74,50 @@ bool load(const char *dictionary)
 
     // Array of characters for later access
     char tmp_word[45];
-    
     // Read file
     while(fscanf(d, "%s", tmp_word) != EOF)
     {
+
         setInHashtable(tmp_word);
         nodesInHashtable++;
+
     }
-    
+
     return true;
+}
+
+void strtolower(char * dest, const char * src, int n)
+{
+    for(int i=0; i < n; i++) {
+        dest[i] = tolower(src[i]);
+    }
 }
 
 
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
-    int bucket = getBucketIndex(word);
-    
+    char* wordLowerCase = malloc(strlen(word));
+    strtolower(wordLowerCase, word, strlen(word));
+
+    // char* wordInLowerCase = toLowerCase(word)
+    int bucket = getBucketIndex(wordLowerCase);
+
     node* cursor = table[bucket];
-    
+
+    //PROBLEM: treats single characters as misspellings
+
     // Traverse through the linked list at a given bucket
-    while(cursor->next != NULL)
+    while(cursor != NULL)
     {
-        cursor = cursor->next;
+        // printf("%s and %s is %i\n", word, cursor->word, strcasecmp(word, cursor->word));
         if(strcasecmp(word, cursor->word) == 0)
         {
             return true;
         }
+        cursor = cursor->next;
     }
-    
+
     return false;
 }
 
