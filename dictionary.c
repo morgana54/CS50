@@ -27,12 +27,20 @@ int nodesInHashtable = 0;
 // Hash table
 node *table[BUCKETS];
 
+// Lower every character in a string
+void strtolower(char * dest, const char * src, int n)
+{
+    for(int i = 0; i < n; i++)
+    {
+        dest[i] = tolower(src[i]);
+    }
+}
+
 // Get index between 1 and BUCKETS
 unsigned int getBucketIndex(const char *word)
 {
     return hash(word) % BUCKETS;
 }
-
 
 // Copy the word into the node
 node* createNode(const char *word)
@@ -49,7 +57,6 @@ node* createNode(const char *word)
 // Setting word in the hash table
 void setInHashtable(char *word)
 {
-
     // Store the index into the variable
     int bucketIndex = getBucketIndex(word);
 
@@ -60,7 +67,6 @@ void setInHashtable(char *word)
     n->next = table[bucketIndex]; /* n->next points to the same thing that table points to (that is NULL - if it's the first element inserted to the list)*/
     table[bucketIndex] = n; /* table is a header (AKA bucket) of each linked list*/
 }
-
 
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
@@ -74,6 +80,7 @@ bool load(const char *dictionary)
 
     // Array of characters for later access
     char tmp_word[45];
+
     // Read file
     while(fscanf(d, "%s", tmp_word) != EOF)
     {
@@ -86,14 +93,6 @@ bool load(const char *dictionary)
     return true;
 }
 
-void strtolower(char * dest, const char * src, int n)
-{
-    for(int i=0; i < n; i++) {
-        dest[i] = tolower(src[i]);
-    }
-}
-
-
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
@@ -105,12 +104,9 @@ bool check(const char *word)
 
     node* cursor = table[bucket];
 
-    //PROBLEM: treats single characters as misspellings
-
     // Traverse through the linked list at a given bucket
     while(cursor != NULL)
     {
-        // printf("%s and %s is %i\n", word, cursor->word, strcasecmp(word, cursor->word));
         if(strcasecmp(word, cursor->word) == 0)
         {
             return true;
@@ -153,9 +149,9 @@ bool unload(void)
         node* tmp = cursor;
         while(cursor != NULL)
         {
+            cursor = cursor->next;
             free(tmp);
             tmp = cursor;
-            cursor = cursor->next;
         }
     }
     return true;
