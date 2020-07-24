@@ -153,9 +153,9 @@ bool unload(void)
         node* tmp = cursor;
         while(cursor != NULL)
         {
-            cursor = cursor->next;
             free(tmp);
             tmp = cursor;
+            cursor = cursor->next;
         }
     }
     return true;
