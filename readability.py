@@ -1,5 +1,6 @@
 from cs50 import get_string
 
+
 def countLetters(text):
 
     number = 0
@@ -14,7 +15,6 @@ def countLetters(text):
     return number
 
 
-# ANALIZE IT CAREFULLY ONCE AGAIN + opisac dla siebie lepiej while loop
 def countWords(text):
     number = 0
     i = 0 
@@ -32,6 +32,7 @@ def countWords(text):
 
     return number
 
+
 def countSentences(text):
 
     number = 0
@@ -43,13 +44,11 @@ def countSentences(text):
     return number
 
 
-
-
 usertext = get_string("Text: ")
 
-letters = countLetters(usertext);
-words = countWords(usertext);
-sentences = countSentences(usertext);
+letters = countLetters(usertext)
+words = countWords(usertext)
+sentences = countSentences(usertext)
 
 L = float(100 * letters/words)
 S = float(100 * sentences / words)
@@ -60,6 +59,6 @@ if index >= 1 and index <= 15:
 elif index < 1:
     print("Before Grade 1")
 elif index >= 16:
-    print ("Grade 16+")
+    print("Grade 16+")
 
 
