@@ -1,21 +1,13 @@
 import csv
 from sys import argv, exit
 
-
 # Add more comments!
 
 if len(argv) != 3:
     print("Usage: python dna.py data.csv sequence.txt")
-    # if len(argv) == 2:
-    #     print("missing one command-line argument")
-    # elif len(argv) == 1:
-    #     print("missing two command-line arguments")
-    # else:
-    #     print("too many command-line arguments")
     exit(1)
+    
 
-
-# Counts the longest consecutive STRs
 def countSTR(text, string):
 
     STR = 0
@@ -57,10 +49,9 @@ DNA_sequence = open(argv[2], "r")
 
 # List of string STRs
 STR_str = ['AGATC', 'TTTTTTCT', 'AATG', 'TCTAG', 'GATA', 'TATC', 'GAAA', 'TCTG']
+
 # List of ints STRs
 STR_num = [AGATC, TTTTTTCT, AATG, TCTAG, GATA, TATC, GAAA, TCTG]
-
-
 
 
 # Read whole text at once
@@ -74,23 +65,23 @@ STR_num_small = [STR_num[0], STR_num[2], STR_num[5]]
 
 # Open the CSV file for reading
 with open(argv[1], newline='') as csvfile:
-     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-     i = 0
-     for row in spamreader:
-         #  
-         csv_strings = row[0].split(',')
-         # Don't look at the first line of csv file
-         if i > 0:
-             # Change strings to ints (excluding names)
-             nums = list(map(int, csv_strings[1:len(csv_strings)]))
-             if nums == STR_num or nums == STR_num_small:
-                 # Print person's name
-                 print(csv_strings[0])
-                 # End program if there's a match
-                 exit(0)
+    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    i = 0
+    for row in spamreader:
+        #  
+        csv_strings = row[0].split(',')
+        # Don't look at the first line of csv file
+        if i > 0:
+            # Change strings to ints (excluding names)
+            nums = list(map(int, csv_strings[1:len(csv_strings)]))
+            if nums == STR_num or nums == STR_num_small:
+                # Print person's name
+                print(csv_strings[0])
+                # End program if there's a match
+                exit(0)
 
-         i += 1
-     print("No match")
+        i += 1
+    print("No match")
 
 # pytanie: czemu nie działa bez'[0]' po 'row'
 
