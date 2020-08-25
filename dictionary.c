@@ -79,6 +79,7 @@ bool load(const char *dictionary)
         nodesInHashtable++;
     }
 
+    free(d);
     return true;
 }
 
