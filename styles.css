@@ -1,0 +1,144 @@
+body, html {
+    /*TUTAJ TEŻ POTEM PRZYPOMNIEĆ SOBIE PYTAJĄC KACPRA CO WSZYSTKO ZNACZY*/
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Helvetica";
+    font-size: 80px;
+    color: white;
+    text-shadow: 3px 4px 10px blue;
+}
+
+/*tu może możesz pokombinować coś z heigh/width po prostu*/
+.background {
+    background-image: url("titlepage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    filter: blur(2px);
+}
+
+/*poczytać potem o tych właściwościach więcej*/
+.home-elements {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+/*to potem zajeb maybe ALERTEM z BOOTSTRAPA ładnym (CHOOSE YOUR BOY)*/
+.text1 {
+    font-size: 55px;
+    text-shadow: 1px 1px 4px;
+    text-align: center;
+}
+
+/*zrobić tak: jak schodzi poniżej jakiejś szerokości to zmieniaj wygląd buttons na inny! MEDIA QUERY!*/
+.home-buttons {
+    font-size: 65px;
+    border-style: groove;
+    border-radius: 20px;
+}
+
+#buttonB {
+    position: fixed;
+    top: 250%;
+    left: 7%;
+}
+
+#buttonP {
+    position: fixed;
+    top: 250%;
+    left: 75%;
+}
+
+#buttonK {
+    position: fixed;
+    top: 250%;
+    left: 43.5%;
+}
+
+/*PYTANIE: co oznacza ten zapis z dwukropkiemi czemu tak musi być*/
+.hover {
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.hover:hover {
+    transform: scale(1.08);
+}
+
+
+/*BOYS PAGES*/
+#BogdanBody {
+    background-color: #dc3545;
+}
+
+#PietrziBody {
+    background-color: #28a745;
+}
+
+#KacperBody {
+    background-color: #007bff;
+}
+
+
+.image_position {
+    position: fixed;
+    top: 20%;
+    left: 75%;
+    width: 14%;
+    height: auto;
+}
+
+.video-position {
+    position: fixed;
+    top: 20%;
+    left: 55%;
+    width: 14%;
+    height: auto;
+}
+
+
+/*ZASTANOWIĆ JAK ZROBIĆ TO MNIEJ REDUNDANT - czyli jednym kodem zrobić tak żeby się dopasowały,
+zamiast dla każdego osobną dawać - ciekawe czy tak się da*/
+.boypage-buttons {
+    font-size: 20px;
+    position: fixed;
+    top: 90%;
+}
+
+.actions {
+    font-size: 25px;
+}
+
+.doIt {
+    font-size: 50px;
+    position: fixed;
+    top: 35%;
+    left: 25%;
+}
+
+#button1-boypage {
+    left: 35%;
+}
+
+#button2-boypage {
+    left: 45%;
+}
+
+#button3-boypage {
+    left: 55%;
+}
+
+
+/*do kompatybilności przy zmniejszaniu strony itp. używaj instruckji
+np. bootstrap layout*/
