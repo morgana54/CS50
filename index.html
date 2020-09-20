@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<!--specifications:
+- użyć 10 RÓŻNYCH i NOWYCH tagów HTML (czyli oprócz <html>, <head>, <body>, and <title>), wybierz stąd:
+    - p, a, div, table, form, image, table rows/cells, headings (h1, h2..), script (na koniec body), select (for drop-down), <video>,
+    <kbd> możesz też np. dac instrukcję press B for Bogdan czy coś tam i wtedy się wyświetli jego strona i będzie tam mozna jakąś formę jego zobaczyć
+    i będą się ładować różne zdjęcia jego
+- ensure that your site looks nice on browsers both on mobile devices as well as laptops and desktops
+-->
+
+<!--ZADANIA:
+1.
+2. opcja do dropdown menu - Z KACPREM TO ZROBIĆ:
+    .. happy/sad face - poruszająca się dłoń i kiedy będzie zasłaniać twarz to zmienia się uśmiech!!
+3.
+4. kompatybilność z wyświetlaniem na telefonie i żeby był fluid ----
+    - NAJPIERW OBEJRZYJ CHOMĘ DO TEGO  + https://www.w3schools.com/css/css_rwd_images.asp
+    - ustawić minimalna rozdzielczość tak żeby ZAWSZE był widoczny napis ostrobramska i buttony
+    (jak coś to robił to Choma!)
+-->
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
+    </head>
+    <body>
+        <div class="background"></div>
+        <div class="home-elements">
+            <h1>OSTROBRAMSKA BOYS</h1>
+            <p class="text1">Choose your boy and have fun with him!</p>
+            <!--POTEM JAK ZABRAKNIE TAGÓW to dodać jakieś tabele fajne czy cokolwiek
+            i też może je interaktywne zrobić-->
+            <!--PYTANIE do Kacpra: jak to niżej napisać w osobnym script.js-->
+            <button type="button" class="hover btn btn-danger home-buttons" id="buttonB" onclick="document.location='bogdan.html'">BOGDAN</button>
+
+            <!----TU BĘDZIE TRZEBA JESZCZE DODAĆ TAK ŻE JAK SIĘ ZMNIEJSZY TO ŻEBY NIC NIE ZNIKAŁO
+            -- PATRZ CHOMA VIDEO-->
+            <button type="button" class="hover btn btn-success home-buttons" id="buttonP" onclick="document.location='pietrzi.html'">PIETRZI</button>
+            <button type="button" class="hover btn btn-primary home-buttons" id="buttonK" onclick="document.location='kacper.html'">KACPER</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
+
+
+<!--INNE PYTANIA DO KACPRA:
+- weź mi objaśnij properties, atribbutes itp. , jak nazywac po kolei rzeczy po tych wielu kropkach np. w tym:
+    document.getElementById("mySelect").options.namedItem("orange").text;-->
