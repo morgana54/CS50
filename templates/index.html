@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+<!--YOU WILL DO THE STYLING LATER-->
+{% block main %}
+    <table class="table">
+        <tr style="background-color: #dee2e6">
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+        {% for row in stocks %}
+            {% if totalShares[loop.index0] %}
+            <tr style="background-color: #f8f9fa!important">
+                <td>{{ row["symbol"] }}</td>
+                <td>{{ row["companyName"] }}</td>
+                <td>{{ totalShares[loop.index0] }} </td>
+                <td>{{ row["price"] }}</td>
+                <td>{{ totalValue[loop.index0] }}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        <tr style="background-color: #f8f9fa!important">
+            <td>CASH</td>
+            <td colspan="3"></td>
+            <td>{{ cash }}</td>
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <td><b>{{ totalMoney }}</b></td>
+        </tr>
+    </table>
+{% endblock %}
