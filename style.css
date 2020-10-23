@@ -1,0 +1,191 @@
+.links {
+    text-align: right;
+    width: 100%;   
+}
+
+a {
+    text-decoration: none;
+    color: rgba(15, 15, 15, 0.87);
+    font-family: Arial, sans-serif;
+    font-size: 13px; 
+    margin-right: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgb(126, 123, 123);
+}
+
+/* 
+TASKS:
+- responsywność ADVANCED SEARCH całego (z media query zapewne)
+- zaczynanie wpisywania tekstu nie od razu przy krawędzi
+ */
+
+.search {
+    position: fixed;
+    width: 100%;
+    bottom: 52%;
+    text-align: center;
+    /* background: green; */
+}
+
+.search_adv {
+    position: fixed;
+    bottom: 50%;
+    left: 22%;
+}
+
+.search_bar {
+    margin: 10px;
+    border: 0.5px solid #d4d4d4;
+    border-radius: 35px;
+    border-width: 0.5px;
+    height: 38px;
+    font-size: medium;
+}
+
+@media (min-width: 600px) {
+    .search_bar {
+        width: 500px;
+    }
+}
+
+@media (max-width: 599px) {
+    .search_bar {
+        width: 85%;
+    }
+}
+
+#adv_search_incript {
+    color: #d93025;
+    font-size: 20px;
+    font-family: sans-serif;
+    position: absolute;
+    top: -120px;
+}
+
+.search_bar_adv {
+    margin-top: 10px;
+    height: 27px;
+    width: 300px;
+    border: 1px solid #d4d4d4;
+}
+
+#div_btn_adv {
+    text-align: right;
+}
+
+.text_next_to_bar {
+    position: absolute;
+    left: -58.5%;
+    bottom: 76.5%;
+    color: #222;
+    width: 170px;
+    height: 31px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+
+#tntb2 {
+    position: absolute;
+    bottom: 56.5%;
+}
+
+#tntb3 {
+    position: absolute;
+    bottom: 36.5%;
+}
+
+#tntb4 {
+    position: absolute;
+    bottom: 16.5%;
+}
+
+.btn_nor {
+    background-color: #f2f2f2;
+    color: #5F6368;
+    width: 140px;
+    height: 35px;
+    border-radius: 4px;
+    border: 1px;
+    font-size: 11px;
+    text-align: center;
+    font-size: 14px;
+    margin: 11px 4px;   
+}
+
+@media (max-width: 305px) {
+    .btn_nor {
+        width: 40%;
+        font-size: 10px;
+    }
+}
+
+.btn_adv {
+    background-color: #5492f5;
+    width: 135px;
+    height: 30px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 4px;
+    border: 1px solid #3079ed;
+    margin-top: 10px;
+}
+
+.btn_adv:hover {
+    background-color: #387dec;
+}
+
+/* erases black line when input field is clicked  */
+input:focus {
+    outline: none;
+}
+
+input:hover {
+    box-shadow: 1px 1px 5px rgb(187, 185, 185)}
+
+.image {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 140px;
+    height: auto;
+    max-width: 100%;
+}
+
+.image1 {
+    bottom: 133px;
+}
+
+@media (max-width: 320px) {
+    .image, .image1 {
+        width: 80%;
+    }
+}
+
+@media (max-height: 550px) {
+    .image, .image1 {
+        height: 60%;
+    }
+}
+
+
+/* 
+POSITION NOTES:
+1. RELATIVE
+- relative to static position (top, bottom, left, right)
+- element is removed from the document flow (it overflows others)
+
+2. ABSOLUTE
+- completely removes element form the document flow
+- when you want specific position but dont want to move
+antyhing around it
+- also it is relative to non-static parents (when using top, left..)
+ */
