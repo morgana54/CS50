@@ -43,7 +43,7 @@ TASKS:
     border-width: 0.5px;
     height: 38px;
     font-size: medium;
-    padding: 15px;
+    padding-left: 15px;
 }
 
 @media (min-width: 600px) {
