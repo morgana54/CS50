@@ -7,39 +7,31 @@
         <title>Bogdan</title>
     </head>
     <body id=BogdanBody>
-        <!--jaki jest skrót od zaznaczania całego tekstu i przesuwania go? KACPER-->
             <form>
                 <select class="custom-select actions" id="mySelect">
                     <option>Choose action!</option>
                     <option>Make funny face!</option>
                     <option>Dance hakken for me Bogdan!</option>
                     <option>Make sad/happy face! (TO DO)</option>
-                    <!--<option>...</option>-->
                 </select>
             </form>
 
-            <button type="button" class="btn btn-light doIt" onclick="executeDropdownBogdan()">Do it!</button>
+            <button type="button" class="btn btn-light doIt" id="bogdan-action-btn">Do it!</button>
 
-            <!--STYLE: zrób potem granice okrągłe do zdjęcia!!!-->
             <img class="image_position" id="BogdanImage" src="bognor.jpg" alt="Bogdan picture">
 
             <button class="boypage-buttons btn btn-dark" type="button" id="button1-boypage" onclick="document.location='index.html'">HOME</button>
             <button class="boypage-buttons btn btn-dark" type="button" id="button2-boypage" onclick="document.location='pietrzi.html'">PIETRZI</button>
             <button class="boypage-buttons btn btn-dark" type="button" id="button3-boypage"onclick="document.location='kacper.html'">KACPER</button>
 
-            <!--PYTANIE: czy mogę jakoś napisać warunek,
-            że jak wywoła się funkcja play to attribute video zmieni się na "autoplay"?
-            żeby cały czas sie odtwarzało-->
-            <!--<button onclick="playVidB()">Dance hakken for me Bogdan!</button>-->
-            <!--<button onclick="pauseVidB()">Stop it!</button>-->
-
-            <!--dodatkowy feature PYTANIE DO KACPRA: jak zrobić żeby sie pojawiało dopiero
-            jak się kliknie na przycisk-->
-            <video class="video-position" id="BogdanVideo" width="500" height="356">
+            <video class="video-position hidden" id="BogdanVideo" width="500" height="356">
                 <source src="boghak.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
 
         <script src="script.js"></script>
+        <script>
+            createBogdanListener()
+        </script>
     </body>
 </html>
