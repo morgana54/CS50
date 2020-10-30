@@ -16,7 +16,7 @@
             </select>
         </form>
 
-        <button type="button" class="btn btn-light doIt" onclick="executeDropdownPietrzi()">Do it!</button>
+        <button type="button" class="btn btn-light doIt" id="pietrzi-action-btn">Do it!</button>
 
         <img class="image_position" id="PietrziImage" src="kubnor.jpg" alt="Pietrzi picture">
 
@@ -24,16 +24,14 @@
         <button class="boypage-buttons btn btn-dark" type="button" id="button2-boypage" onclick="document.location='bogdan.html'">BOGDAN</button>
         <button class="boypage-buttons btn btn-dark" type="button" id="button3-boypage"onclick="document.location='kacper.html'">KACPER</button>
 
-        <!--<button onclick="playVidP()">Dance hakken for me Pietrzi!</button>-->
-        <!--<button onclick="pauseVidP()">Stop it!</button>-->
-
-        <!--dodatkowy feature PYTANIE DO KACPRA: jak zrobić żeby sie pojawiało dopiero
-        jak się kliknie na przycisk-->
-        <video class="video-position" id="PietrziVideo" width="500" height="356">
+        <video class="video-position hidden" id="PietrziVideo" width="500" height="356">
             <source src="kubhak.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
 
         <script src="script.js"></script>
+        <script>
+            createPietrziListener()
+        </script>
     </body>
 </html>
